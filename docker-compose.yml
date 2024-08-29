@@ -3,12 +3,12 @@ services:
     image: roundcube/roundcubemail:latest
     container_name: roundcubemail
     restart: unless-stopped
+    expose:
+      - "80"
     volumes:
       - ./www:/var/www/html
       - ./db/sqlite:/var/roundcube/db
       - /data/local/webmail.neuf.no/plugins/identity_smtp:/var/www/html/plugins/identity_smtp
-    ports:
-      - 9002:80
     environment:
       - ROUNDCUBEMAIL_DB_TYPE=sqlite
       - ROUNDCUBEMAIL_SKIN=elastic
