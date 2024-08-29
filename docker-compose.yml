@@ -6,6 +6,7 @@ services:
     volumes:
       - ./www:/var/www/html
       - ./db/sqlite:/var/roundcube/db
+      - /data/local/webmail.neuf.no/plugins/identity_smtp:/var/lib/roundcube/plugins/identity_smtp
     ports:
       - 9002:80
     environment:
@@ -14,6 +15,4 @@ services:
       - ROUNDCUBEMAIL_DEFAULT_HOST=tls://mx.neuf.no
       - ROUNDCUBEMAIL_SMTP_SERVER=tls://mx.neuf.no
       - ROUNDCUBEMAIL_PLUGINS=archive,zipdownload,identity_smtp 
-    volumes:
-      - /data/local/webmail.neuf.no/plugins/identity_smtp:/var/lib/roundcube/plugins/identity_smtp
 
