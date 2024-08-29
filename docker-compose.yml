@@ -6,13 +6,15 @@ services:
     expose:
       - "80"
     volumes:
-      - ./www:/var/www/html
-      - ./db/sqlite:/var/roundcube/db
+      #- ./www:/var/www/html
+      - /data/local/webmail.neuf.no/db/sqlite:/var/roundcube/db
       - /data/local/webmail.neuf.no/plugins/identity_smtp:/var/www/html/plugins/identity_smtp
     environment:
       - ROUNDCUBEMAIL_DB_TYPE=sqlite
       - ROUNDCUBEMAIL_SKIN=elastic
-      - ROUNDCUBEMAIL_DEFAULT_HOST=tls://mx.neuf.no
+      - ROUNDCUBEMAIL_DEFAULT_HOST=ssl://mx.neuf.no
+      - ROUNDCUBEMAIL_DEFAULT_PORT=993
       - ROUNDCUBEMAIL_SMTP_SERVER=tls://mx.neuf.no
+      - ROUNDCUBEMAIL_SMTP_PORT=587
       - ROUNDCUBEMAIL_PLUGINS=archive,zipdownload,identity_smtp 
 
